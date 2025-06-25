@@ -1,5 +1,5 @@
-# Tenda AC8 v4 V16.03.34.06 Vulnerability Report  
-
+# Tenda AC8 v4 V16.03.34.06
+Under **/goform/WifiBasicSet**, the parameters **security** and **security_5g** can lead to stack overflow vulnerabilities【The following takes the stack overflow caused by the **security** parameter as an example】
 ## Environment & Tool Versions Used:  
 - Ubuntu 22.04  
 - binwalk v2.2.1  
