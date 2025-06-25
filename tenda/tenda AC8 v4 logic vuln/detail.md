@@ -18,7 +18,6 @@ When accessing `/goform/WifiBasicSet` without setting any parameters, the `secur
 - The router becomes accessible without a password.  
 - All connected devices are disconnected and need to reconnect.  
 
-
 ![2_1](2_1.png)
 
 
