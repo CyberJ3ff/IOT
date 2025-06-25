@@ -19,48 +19,7 @@ When accessing `/goform/WifiBasicSet` without setting any parameters, the `secur
 - All connected devices are disconnected and need to reconnect.  
 
 
-```c
-int _fastcall sub_45DC58(int a1, int a2, const char *a3) {
-    size_t v3; // $v0
-    int mibname; // $ve
-    int v6; // $ve
-    char *src; // [sp+18h] [+18h]
-    char v8[256]; // [sp+24h] [+24h] BYREF
-    _BYTE v9[256]; // [sp+124h] [+124h] BYREF
-    _BYTE v10[256]; // [sp+224h] [+224h] BYREF
-    int v11; // [sp+324h] [+324h]
-
-    memset(v8, 0, sizeof(v8));
-    v11 = 256;
-    memset(v9, 0, sizeof(v9));
-    memset(v10, 0, sizeof(v10));
-    v3 = strlen(a3);
-    if (!strncmp(a3, "0", v3))
-        src = websGetVar(a1, "security", (int)"none");
-    else
-        src = websGetVar(a1, "security_5g", (int)"none");
-    if (!src)
-        return 1;
-    mibname = wifi_get_mibname(a2, "bss_security", v9);
-    GetValue(mibname, v10);
-    SetValue(v9, src);
-    if (!strcmp(src, "wpapsk") || !strcmp(src, "wpa2psk") || !strcmp(src, "wpawpa2psk"))
-        SetValue(v9, "wpapsk");
-    else
-        SetValue(v9, src);  // When src is "none", sets bss_security to "none"
-    strcpy(v8, src);
-    v6 = wifi_get_mibname(a2, "bss_wpapsk_type", v9);
-    GetValue(v6, v10);
-    if (!strcmp(src, "wpapsk")) {
-        SetValue(v9, "psk");
-    } else if (!strcmp(src, "wpa2psk")) {
-        SetValue(v9, "psk2");
-    } else if (!strcmp(src, "wpawpa2psk")) {
-        SetValue(v9, "psk+psk2");
-    }
-    return sub_45D91C(a1, a2, v8, a3);
-}
-```  
+![2_1](2_1.png)
 
 
 ## Vulnerability Reproduction  
